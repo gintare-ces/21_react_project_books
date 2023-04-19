@@ -10,15 +10,16 @@ function SinglePostPage() {
   // gauti id to post kuriame esam
   const { postUid } = useParams()
 
-  const docRef = doc(db, 'posts', postUid)
+  const docRef = doc(db, 'hookPosts', postUid)
   const [value, loading, error] = useDocument(docRef)
   // parsiusti posta react cloud firestore hooks
   console.log('value?.data() ===', value?.data());
   const thisPostObj = value?.data()
+  console.log('error ===', error);
   return (
     <div  className='container'>
-      <Loader show={loading} />
       <h1 className='display-3 mt-5'>{thisPostObj?.title}</h1>
+      <Loader show={loading} />
       {/* single post */}
       <SinglePost item={thisPostObj} />
     </div>

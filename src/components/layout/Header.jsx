@@ -22,7 +22,14 @@ function Header() {
                   <NavLink className='text-decoration-none text-white px-2' to={'/posts'}>Posts</NavLink>
                   </>
                 )}
-                <NavLink className='text-decoration-none text-white px-2' to={'/login'}>Login</NavLink>
+                {isLoggedIn &&(
+                 <>
+                  <NavLink className='text-decoration-none text-white px-2' to={'/posts/add'}>Create Post</NavLink>
+                  </>
+                )}
+                {!isLoggedIn && 
+                  <NavLink className='text-decoration-none text-white px-2' to={'/login'}>Login</NavLink>
+                }
                 <Logout />
                 
             </nav>
