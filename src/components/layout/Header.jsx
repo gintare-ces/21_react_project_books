@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './header.scss'
 import { useAuthCtx } from '../../store/AuthProvider';
+import Logout from '../forms/Logout';
 
 function Header() {
   const { isLoggedIn } = useAuthCtx();
@@ -22,7 +23,8 @@ function Header() {
                   </>
                 )}
                 <NavLink className='text-decoration-none text-white px-2' to={'/login'}>Login</NavLink>
-                <NavLink className='text-decoration-none text-white px-2' to={'/register'}>Register</NavLink>
+                <Logout />
+                
             </nav>
         </div>
     </header>

@@ -4,10 +4,10 @@ import Header from './components/layout/Header';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
 import { Toaster } from 'react-hot-toast';
 import ProfilePage from './pages/ProfilePage';
 import PostPage from './pages/PostsPage';
+import SinglePostPage from './pages/SinglePostPage';
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/posts' element={<PostPage />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/posts/:postUid' element={<SinglePostPage />} />
       </Routes>
     </div>
   );
