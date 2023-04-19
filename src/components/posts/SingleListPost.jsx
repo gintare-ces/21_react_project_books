@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthCtx } from "../../store/AuthProvider";
 
 function SingleListPost({ item }) {
+   const { user } = useAuthCtx()
   return (
     <div className="card">
       <div className="card-body">
@@ -16,7 +18,9 @@ function SingleListPost({ item }) {
                 <span className="badge text-bg-success " key={tag}> {tag}</span>
             ))}
         </div>
-            <hr />
+        {user.uid === item.userUid &&
+            <button className="btn btn-danger">Delete</button>
+        }
         <Link to={`/posts/${item.uid}`} className="btn btn-primary">
           Read more...
         </Link>
