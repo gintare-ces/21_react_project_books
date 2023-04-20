@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuthCtx } from "../../store/AuthProvider";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 function SingleListPost({ item }) {
    const { user } = useAuthCtx()
+
+
+   function handlePostDelete(postToDel) {
+    const delPostRef = deleteDoc(doc(db, "hookPosts", postToDel));
+    console.log('delPostRef ===', delPostRef);
+  }
+
   return (
     <div className="card">
       <div className="card-body">
@@ -19,7 +28,7 @@ function SingleListPost({ item }) {
             ))}
         </div>
         {user.uid === item.userUid &&
-            <button className="btn btn-danger">Delete</button>
+            <button onClick={() => handlePostDelete(item.uid)} className="btn btn-danger">Delete</button>
         }
         <Link to={`/posts/${item.uid}`} className="btn btn-primary">
           Read more...

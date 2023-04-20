@@ -1,4 +1,4 @@
-import { collection, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase/firebase';
@@ -23,15 +23,14 @@ function PostPage() {
   useEffect(() => {}, []);
 
   
-  
-
+ 
   console.log('error ===', error);
   return (
     <div className='container'>
       <h1>PostPage actually Post page</h1>
       <p>This is PostPage</p>
       <Loader show={loading} />
-      <button className='btn'>Order by date: asc</button>
+      <button className='btn' >Order by date: asc</button>
       <button className='btn btn-outline-dark btn-sm' onClick={() => setFilterVal('all')}>all</button>
       <button className='btn btn-outline-dark btn-sm' onClick={() => setFilterVal('books')}>books</button>
       <button className='btn btn-outline-dark btn-sm' onClick={() => setFilterVal('work')}>work</button>
